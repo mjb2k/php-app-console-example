@@ -1,0 +1,18 @@
+#!/bin/sh
+HELP_TEXT="usage: $0 <command>\n
+commands:\n
+\trun : run with built-in webserver in foreground\n
+\tconsole : run interactive php console\n
+"
+
+case $1 in
+  run)
+    php -S localhost:9999 -t .
+    ;;
+  console)
+    php -a -d auto_prepend_file=init.php
+    ;;
+  *)
+    echo $HELP_TEXT
+    ;;
+esac
